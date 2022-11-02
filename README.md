@@ -1,6 +1,8 @@
 # esphome-modbus-server
+
 ESPHome Modbus Server component
 
+> This is a fork from @jpeletier and adds DE/RE pins to toggle send/receive state and adds input register read support.
 
 Example configuration:
 
