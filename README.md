@@ -70,6 +70,15 @@ modbus_server:
           return value;
         on_read: |
           return id(testswitch)->state ? 1 : 0;
+    input_registers:
+      - start_address: 0 # starting register range
+        default: 82 # default value for all those registers
+        number: 20 # number of registers in the range
+        on_read: | # called whenever a register in the range is read
+          // 'address' contains the requested register address
+          // 'value' contains the stored register value 
+          ESP_LOGI("ON_READ", "This is a lambda. address=%d, value=%d", address, value);
+          return value; // you can return the stored value or something else.
 
 switch:
   - platform: gpio
